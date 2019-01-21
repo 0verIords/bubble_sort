@@ -3,18 +3,18 @@ package main
 import "fmt"
 
 func selectSort(array []int) []int {
-	for k := range array {
-		m := k
-		i := k + 1
-		for i < len(array) {
-			if array[i] < array[m] {
-				m = i
+	for i := range array {
+		temp := i
+		j := i + 1
+		for j < len(array) {
+			if array[j] < array[temp] {
+				temp = j
 			}
-			i++
+			j++
 		}
-		t := array[k]
-		array[k] = array[m]
-		array[m] = t
+		temporary := array[i]
+		array[i] = array[temp]
+		array[temp] = temporary
 	}
 	return array
 }
@@ -30,6 +30,11 @@ func bubbleSort(array []int) []int {
 			}
 		}
 	}
+
+	for i, j := 0, len(array)-1; i < j; i, j = i+1, j-1 {
+		array[i], array[j] = array[j], array[i]
+	}
+
 	return array
 }
 
